@@ -27,7 +27,7 @@ Make sure your local version of Git is at least 2.0 (`$ git --version`) to autom
 ```sh
 $ keybase pgp gen
 ```
-*¹ When prompted if you want to use a keyphrase when exporting to the **gpg** keychain, remember this decision, it will imply an extra step.*
+*¹ When prompted if you want to use a keyphrase when exporting to the **gpg** keychain, remember this decision, it will imply an extra step. I personally don’t set a passphrase when exporting the keys, because my keys don’t leave my computer. New computer, new keys. Also, by opting-out the passphrase setting this step will automatically place the keys in your GPG keyring*
 
 ## Set up Git to sign all commits
 ```sh
