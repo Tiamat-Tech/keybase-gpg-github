@@ -49,7 +49,7 @@ $ open https://github.com/settings/keys
 # Paste key, save
 ```
 
-## If Import key to GPG on another host (omit if you skipped ¹)
+## Import key to GPG (omit if you skipped ¹)
 ```sh
 $ keybase pgp export -q F0F5C2BDA33D4066 | gpg --import
 $ keybase pgp export -q F0F5C2BDA33D4066 --secret | gpg --allow-secret-key-import --import
@@ -75,7 +75,7 @@ $ $EDITOR ~/.gnupg/gpg.conf
 default-key F0F5C2BDA33D4066
 ```
 
-## Optional:
+## Optional: Configuring gpg binary for git
 You may need to configure git to point to the specific gpg executable:
 ```sh
 git config --global gpg.program $(which gpg)
