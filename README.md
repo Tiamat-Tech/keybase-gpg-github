@@ -1,7 +1,7 @@
 # Set up Keybase.io, GPG & Git to sign commits on GitHub
 This is a step-by-step guide on how to create a GPG key on [keybase.io](https://keybase.io), adding it to a local GPG setup and use it with Git and GitHub.
 
-If you have Keybase PGP keys already, go directly to the Import your keys to PGP section in this readme.
+If you have Keybase GPG keys already, go directly to the Import your keys to PGP section in this readme.
 
 Although this guide was written for macOS, most commands should work in other operating systems as well.
 
