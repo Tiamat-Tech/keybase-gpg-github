@@ -32,7 +32,7 @@ $ keybase pgp gen
 *² If you have other GPG keys indexed by keybase already, potentially from other devices, you can use the `--multi` flag to index a new one.*
 
 ## Find your GPG Key ID
-Once you created a GPG Key (and index it in keybase) using the step above, find the following
+Once you created a GPG Key using the step above, find the following
 ```
 $ gpg --list-secret-keys --keyid-format LONG
 pub   rsa4096/F0F5C2BDA33D4066 2019-04-27 [SC] [expires: 2035-04-23]
