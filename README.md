@@ -31,26 +31,19 @@ $ keybase pgp gen
 
 *² If you have other GPG keys indexed by keybase already, potentially from other devices, you can use the `--multi` flag to index a new one.*
 
-## Set up Git to sign all commits
-```sh
-$ gpg --list-secret-keys --keyid-format LONG
-# /Users/nacho/.gnupg/pubring.kbx
-# -------------------------------
-# pub   rsa4096/F0F5C2BDA33D4066 2019-04-27 [SC] [expires: 2035-04-23]
-#       E16DBD35E898F5597CE9A770F0F5C2BDA33D4066
-# uid                 [ unknown] Ignacio Alvarez <ignacioalvarez92@gmail.com>
-# sub   rsa4096/F02705FD89BB1053 2019-04-27 [E] [expires: 2035-04-23]
-
-$ git config --global user.signingkey F0F5C2BDA33D4066
-$ git config --global commit.gpgsign true
-```
-
 ## Find your GPG Key ID
-When you create a PGP and index it in keybase using the step above, in the output, find the following
+Once you created a GPG Key (and index it in keybase) using the step above, find the following
 ```
+$ gpg --list-secret-keys --keyid-format LONG
 pub   rsa4096/F0F5C2BDA33D4066 2019-04-27 [SC] [expires: 2035-04-23]
               ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
                    Key ID
+```
+
+## Set up Git to sign all commits
+```sh
+$ git config --global user.signingkey [Your Key ID]
+$ git config --global commit.gpgsign true
 ```
 
 ## Add public GPG key to GitHub
