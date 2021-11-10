@@ -29,6 +29,8 @@ $ keybase pgp gen
 ```
 *¹ When prompted if you want to use a keyphrase when exporting to the **gpg** keychain, remember this decision, it will imply an extra step. By opting-out the passphrase setting this step will automatically place the keys in your GPG keyring.*
 
+*² If you have other GPG keys indexed by keybase already, potentially from other devices, you can use the `--multi` flag to index a new one.*
+
 ## Set up Git to sign all commits
 ```sh
 $ gpg --list-secret-keys --keyid-format LONG
@@ -43,18 +45,26 @@ $ git config --global user.signingkey F0F5C2BDA33D4066
 $ git config --global commit.gpgsign true
 ```
 
+## Find your GPG Key ID
+When you create a PGP and index it in keybase using the step above, in the output, find the following
+```
+pub   rsa4096/F0F5C2BDA33D4066 2019-04-27 [SC] [expires: 2035-04-23]
+              ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+                   Key ID
+```
+
 ## Add public GPG key to GitHub
 ```sh
-$ keybase pgp export | pbcopy # copy public key to clipboard
+$ keybase pgp export -q [Your Key ID] | pbcopy # copy public key to clipboard
 $ open https://github.com/settings/keys
 # Click "New GPG key"
 # Paste key, save
 ```
 
-## Import key to GPG (omit if you skipped ¹)
+## Import key to GPG (can potentially omit if you skipped¹ and if not elegible for²)
 ```sh
-$ keybase pgp export -q F0F5C2BDA33D4066 | gpg --import
-$ keybase pgp export -q F0F5C2BDA33D4066 --secret | gpg --allow-secret-key-import --import
+$ keybase pgp export -q [Your Key ID] | gpg --import
+$ keybase pgp export -q [Your Key ID] --secret | gpg --allow-secret-key-import --import
 ```
 
 ## Troubleshooting: `gpg failed to sign the data`
@@ -74,7 +84,7 @@ If the above succeeds without error, then there is likely a configuration proble
 ```sh
 $ $EDITOR ~/.gnupg/gpg.conf
 # Add line:
-default-key F0F5C2BDA33D4066
+default-key [Your Key ID]
 ```
 
 ## Optional: Configuring gpg binary for git
@@ -84,11 +94,10 @@ git config --global gpg.program $(which gpg)
 ```
 
 ## In case you're prompted to enter the username + password
+### Option 1
+Get a regular SSH key. This will be used for authentication/reading/writing to GitHub, not for signing commits, which is taken care of by GPG.
 
-> Most likely related to 2FA being setup in your account.
-
+### Option 2
 [Create a Personal Access Token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) and, if you are doing this for command line use only, just [x] the **repo** access.
 
 Then, when prompted for username, input yours. When prompted for the password paste the access token.
-
-This will be the last time you'll be prompted for username and password.
