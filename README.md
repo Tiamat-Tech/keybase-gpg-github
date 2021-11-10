@@ -95,7 +95,7 @@ git config --global gpg.program $(which gpg)
 
 ## In case you're prompted to enter the username + password
 ### Option 1
-Get a regular SSH key. This will be used for authentication/reading/writing to GitHub, not for signing commits, which is taken care of by GPG.
+[Get a regular SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). This will be used for authentication/reading/writing to GitHub, not for signing commits, which is taken care of by GPG.
 
 ### Option 2
 [Create a Personal Access Token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) and, if you are doing this for command line use only, just [x] the **repo** access.
